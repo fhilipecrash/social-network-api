@@ -3,7 +3,20 @@ from fastapi import FastAPI, HTTPException, Depends
 from api import crud, schemas, database
 from sqlalchemy.orm import Session
 
-app = FastAPI()
+app = FastAPI(
+    title="Mini Social Media API",
+    description="An example of a mini social media API",
+    version="0.0.1",
+    terms_of_service="http://example.com/terms/",
+    contact={
+        "name": "Fhilipe Coelho",
+        "url": "https://github.com/fhilipecrash",
+        "email": "fhilipecoelho.dev@gmail.com",
+    },
+    license_info={
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
+    },)
 
 
 def get_db():
@@ -83,12 +96,12 @@ def get_post(post_id: int, db: Session = Depends(get_db)):
 
 
 @app.post("/posts/create", response_model=schemas.PostWithUserId, status_code=201)
-def create_user_post(post: schemas.PostCreate, db: Session = Depends(get_db)):
+def create_post(post: schemas.PostCreate, db: Session = Depends(get_db)):
     return crud.create_user_post(db, post)
 
 
 @app.put("/posts/update/{post_id}", response_model=schemas.PostWithUserId)
-def update_user_post(post: schemas.PostBase, post_id: int, db: Session = Depends(get_db)):
+def update_post(post: schemas.PostBase, post_id: int, db: Session = Depends(get_db)):
     db_post = crud.get_post(db, post_id)
     if not db_post:
         raise HTTPException(status_code=404, detail="Post not found")
