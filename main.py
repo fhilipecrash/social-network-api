@@ -2,6 +2,7 @@ from fastapi import FastAPI, APIRouter
 from api.routers import users, posts
 
 app = FastAPI(
+    docs_url="/api/docs",
     title="Mini Social Media API",
     description="An example of a mini social media API",
     version="0.0.1",
