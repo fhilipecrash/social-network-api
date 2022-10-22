@@ -7,19 +7,17 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
 
 
 def get_user(db: Session, user_id: int):
-    user = db.query(models.User).filter(models.User.id == user_id).first()
-    if not user:
+    db_user = db.query(models.User).filter(models.User.id == user_id).first()
+    if not db_user:
         return None
-    return user
+    return db_user
 
 
 def get_user_with_posts(db: Session, user_id: int):
-    user = db.query(models.User).filter(models.User.id == user_id).first()
-    if not user:
+    db_user = db.query(models.User).filter(models.User.id == user_id).first()
+    if not db_user:
         return None
-    user.posts = db.query(models.Post).filter(
-        models.Post.user_id == user_id).all()
-    return user
+    return db_user
 
 
 def get_user_posts(db: Session, user_id: int):
@@ -27,10 +25,10 @@ def get_user_posts(db: Session, user_id: int):
 
 
 def get_user_by_email(db: Session, email: str):
-    user = db.query(models.User).filter(models.User.email == email).first()
-    if not user:
+    db_user = db.query(models.User).filter(models.User.email == email).first()
+    if not db_user:
         return None
-    return user
+    return db_user
 
 
 def create_user(db: Session, user: schemas.UserCreate):
@@ -68,10 +66,10 @@ def get_posts(db: Session, skip: int = 0, limit: int = 100):
 
 
 def get_post(db: Session, post_id: int):
-    post = db.query(models.Post).filter(models.Post.id == post_id).first()
-    if not post:
+    db_post = db.query(models.Post).filter(models.Post.id == post_id).first()
+    if not db_post:
         return None
-    return post
+    return db_post
 
 
 def delete_post(db: Session, post_id: int):
