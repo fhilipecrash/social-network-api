@@ -7,7 +7,7 @@ router = APIRouter(
 )
 
 
-@router.get("/", response_model=list[schemas.PostWithUserId])
+@router.get("", response_model=list[schemas.PostWithUserId])
 def get_posts(db: Session = Depends(get_db)):
     return crud.get_posts(db)
 

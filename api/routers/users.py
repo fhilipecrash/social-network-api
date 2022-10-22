@@ -8,7 +8,7 @@ router = APIRouter(
 )
 
 
-@router.get("/", response_model=list[schemas.User] | schemas.User)
+@router.get("", response_model=list[schemas.User] | schemas.User)
 def get_users(email: Union[str, None] = None, db: Session = Depends(get_db)):
     if email:
         db_user = crud.get_user_by_email(db, email)
