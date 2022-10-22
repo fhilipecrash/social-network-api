@@ -81,7 +81,7 @@ def delete_post(db: Session, post_id: int):
     return db_post
 
 
-def update_post(db: Session, post: schemas.PostCreate, post_id: int):
+def update_post(db: Session, post: schemas.PostBase, post_id: int):
     db_post = db.query(models.Post).filter(models.Post.id == post_id).first()
     if not db_post:
         return None
