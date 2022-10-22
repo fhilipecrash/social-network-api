@@ -7,11 +7,17 @@ class PostBase(BaseModel):
 
 
 class PostCreate(PostBase):
-    pass
+    user_id: int
 
 
 class Post(PostBase):
     id: int
+
+    class Config:
+        orm_mode = True
+
+
+class PostWithUserId(Post):
     user_id: int
 
     class Config:
@@ -29,6 +35,12 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     id: int
+
+    class Config:
+        orm_mode = True
+
+
+class UserWithPosts(User):
     posts: list[Post] = []
 
     class Config:
