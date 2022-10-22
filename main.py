@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter
 from api.routers import users, posts
 
 app = FastAPI(
@@ -16,5 +16,9 @@ app = FastAPI(
         "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
     },)
 
-app.include_router(users.router)
-app.include_router(posts.router)
+prefix_router = APIRouter(prefix="/api")
+
+prefix_router.include_router(users.router)
+prefix_router.include_router(posts.router)
+
+app.include_router(prefix_router)
