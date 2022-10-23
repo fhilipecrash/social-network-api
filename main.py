@@ -2,6 +2,9 @@ from fastapi import FastAPI, Depends, Request
 from api.routers import users_router, posts_router
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.middleware.cors import CORSMiddleware
+# from api.database import Base, engine
+
+# Base.metadata.create_all(bind=engine)
 
 tags_metadata = [
     {

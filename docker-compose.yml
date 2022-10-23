@@ -1,0 +1,42 @@
+version: '3'
+services:
+  python:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    ports:
+      - "8000:8000"
+      - "9999:9999"
+    networks:
+      - social-network
+  pgsql:
+    image: 'postgres:14'
+    ports:
+      - '${DB_PORT:-5432}:5432'
+    environment:
+      PGPASSWORD: '${DB_PASSWORD:-secret}'
+      POSTGRES_DB: '${DB_DATABASE:-userpostsdb}'
+      POSTGRES_USER: '${DB_USERNAME:-postgres}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+    networks:
+      - social-network
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'pg_isready',
+          '-q',
+          '-d',
+          '${DB_DATABASE}',
+          '-U',
+          '${DB_USERNAME}'
+        ]
+      retries: 3
+      timeout: 5s
+networks:
+  social-network:
+    driver: bridge
