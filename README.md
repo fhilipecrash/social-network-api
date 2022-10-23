@@ -31,6 +31,7 @@ The frontend code can be found <a href="https://github.com/fhilipecrash/social-n
 - Docker Compose
 - Python >= 3.10
 - Pipenv
+- Traefik (optional)
 
 ### Installation
 
@@ -48,4 +49,14 @@ The frontend code can be found <a href="https://github.com/fhilipecrash/social-n
 
 ## Usage
 
-Checkout the Swagger documentation at http://localhost:8000/api/docs
+Checkout the Swagger documentation at http://localhost:8000/docs
+
+You can use [traefik](https://github.com/traefik/traefik) to use a basic proxy to the project. If you have trakif binary on your PATH, you can run the following command to start the proxy:
+
+**Note**: This command will use your current terminal session to run the proxy and you don't be able to use the terminal while the proxy is running. So open a new terminal session to run the project.
+
+```sh
+pipenv run proxy # Run the proxy
+```
+
+Now you can access the documentation at http://localhost:9999/api/v1/docs just like any other application route and it is recommended to use the same url and port to test the endpoints.
