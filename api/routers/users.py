@@ -2,7 +2,6 @@ from api.database import get_db
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from api import schemas, crud
-from typing import Union
 
 router = APIRouter(
     prefix="/users",
@@ -12,7 +11,7 @@ router = APIRouter(
 
 
 @router.get("", response_model=list[schemas.User] | schemas.User)
-def get_users(email: Union[str, None] = None, db: Session = Depends(get_db)):
+def get_users(email: str | None = None, db: Session = Depends(get_db)):
     if email:
         db_user = crud.get_user_by_email(db, email)
         if not db_user:
