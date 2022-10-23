@@ -1,5 +1,5 @@
 from fastapi import FastAPI, APIRouter
-from api.routers import users, posts
+from api.routers import users_router, posts_router
 
 app = FastAPI(
     docs_url="/api/docs",
@@ -19,7 +19,7 @@ app = FastAPI(
 
 prefix_router = APIRouter(prefix="/api")
 
-prefix_router.include_router(users.router)
-prefix_router.include_router(posts.router)
+prefix_router.include_router(users_router)
+prefix_router.include_router(posts_router)
 
 app.include_router(prefix_router)
