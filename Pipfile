@@ -16,4 +16,4 @@ autopep8 = "*"
 python_version = "3.10"
 
 [scripts]
-start = "uvicorn main:app --reload"
+dev = "uvicorn main:app --reload"
