@@ -3,8 +3,8 @@ from api.routers import users_router, posts_router
 
 app = FastAPI(
     docs_url="/api/docs",
-    title="Mini Social Media API",
-    description="An example of a mini social media API",
+    title="Social Network API",
+    description="An example of a mini social network API",
     version="0.0.1",
     terms_of_service="http://example.com/terms/",
     contact={
