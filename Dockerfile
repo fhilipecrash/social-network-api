@@ -2,13 +2,13 @@ FROM python:3.10.8-alpine
 
 WORKDIR /app
 
-COPY ./Pipfile ./Pipfile.lock ./
+COPY Pipfile Pipfile.lock ./
 
-RUN apk add --no-cache traefik \
+RUN apk update && apk add --no-cache traefik git \
     && pip install pipenv \
     && pipenv install
 
-COPY . /app
+COPY --chown=root:root . .
 
 RUN chmod +x /app/entrypoint.sh
 

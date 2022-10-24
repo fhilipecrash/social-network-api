@@ -1,0 +1,15 @@
+{
+  "name": "Social Network API",
+  "dockerComposeFile": "../docker-compose.yml",
+  "workspaceFolder": "/app",
+  "service": "python",
+  "extensions": [
+    "mikestead.dotenv",
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "github.copilot",
+    "ms-azuretools.vscode-docker",
+    "ms-python.python"
+  ],
+  "shutdownAction": "stopCompose"
+}

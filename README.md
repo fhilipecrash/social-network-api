@@ -40,18 +40,27 @@ The frontend code can be found <a href="https://github.com/fhilipecrash/social-n
    git clone https://github.com/fhilipecrash/social-network-api
    ```
 2. Run the project
-   ```sh
-    docker-compose up -d # Run the postgres container
-    pipenv shell # Activate the virtual environment
-    pipenv install # Install the dependencies
-    pipenv run dev # Run the project
-   ```
+   1. Without Docker python container
+      ```sh
+      docker-compose up -d # Run the postgres container
+      pipenv shell # Activate the virtual environment
+      pipenv install # Install the dependencies
+      pipenv run dev # Run the project
+      ```
+   2. With Docker python container
+      ```sh
+      docker-compose up -d # Run the postgres and python container
+      ```
+   3. With Devcontainer
+      If you have Devcontainer extension just open the project in VSCode and it will automatically create the container for you.
 
 ## Usage
 
 Checkout the Swagger documentation at http://localhost:8000/docs
 
 You can use [traefik](https://github.com/traefik/traefik) to use a basic proxy to the project. If you have trakif binary on your PATH, you can run the following command to start the proxy:
+
+**Note**: Traefik is started automatically when you run the project with docker-compose.
 
 **Note**: This command will use your current terminal session to run the proxy and you don't be able to use the terminal while the proxy is running. So open a new terminal session to run the project.
 
