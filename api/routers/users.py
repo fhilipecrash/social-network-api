@@ -41,7 +41,7 @@ def get_user_posts(user_id: int, with_user_info: bool = False, db: Session = Dep
     return db_user
 
 
-@router.post("/create", response_model=schemas.User, status_code=201)
+@router.post("", response_model=schemas.User, status_code=201)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db_user = controllers.get_user_by_email(db, user.email)
     if db_user:
@@ -49,7 +49,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     return controllers.create_user(db, user)
 
 
-@router.put("/update/{user_id}", response_model=schemas.User)
+@router.put("/{user_id}", response_model=schemas.User)
 def update_user(user: schemas.UserCreate, user_id: int, db: Session = Depends(get_db)):
     db_user = controllers.get_user(db, user_id)
     if not db_user:
@@ -57,7 +57,7 @@ def update_user(user: schemas.UserCreate, user_id: int, db: Session = Depends(ge
     return controllers.update_user(db, user, user_id)
 
 
-@router.delete("/delete/{user_id}", status_code=204)
+@router.delete("/{user_id}", status_code=204)
 def delete_user(user_id: int, db: Session = Depends(get_db)):
     db_user = controllers.get_user(db, user_id)
     if not db_user:

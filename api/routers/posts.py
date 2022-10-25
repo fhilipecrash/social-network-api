@@ -23,12 +23,12 @@ def get_post(post_id: int, db: Session = Depends(get_db)):
     return db_post
 
 
-@router.post("/create", response_model=schemas.PostWithUserId, status_code=201)
+@router.post("", response_model=schemas.PostWithUserId, status_code=201)
 def create_post(post: schemas.PostCreate, db: Session = Depends(get_db)):
     return controllers.create_user_post(db, post)
 
 
-@router.put("/update/{post_id}", response_model=schemas.PostWithUserId)
+@router.put("/{post_id}", response_model=schemas.PostWithUserId)
 def update_post(post: schemas.PostBase, post_id: int, db: Session = Depends(get_db)):
     db_post = controllers.get_post(db, post_id)
     if not db_post:
@@ -36,7 +36,7 @@ def update_post(post: schemas.PostBase, post_id: int, db: Session = Depends(get_
     return controllers.update_post(db, post, post_id)
 
 
-@router.delete("/delete/{post_id}", status_code=204)
+@router.delete("/{post_id}", status_code=204)
 def delete_post(post_id: int, db: Session = Depends(get_db)):
     db_post = controllers.get_post(db, post_id)
     if not db_post:
