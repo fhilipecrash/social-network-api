@@ -42,7 +42,7 @@ The frontend code can be found <a href="https://github.com/fhilipecrash/social-n
 2. Run the project
    1. Without Docker python container
       ```sh
-      docker-compose up -d # Run the postgres container
+      docker-compose up -d pgsql # Run the postgres container
       pipenv shell # Activate the virtual environment
       pipenv install # Install the dependencies
       pipenv run dev # Run the project
