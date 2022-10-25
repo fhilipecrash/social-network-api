@@ -1,7 +1,7 @@
 {
   "name": "Social Network API",
   "dockerComposeFile": "../docker-compose.yml",
-  "workspaceFolder": "/app",
+  "workspaceFolder": "/home/worker/app",
   "service": "python",
   "extensions": [
     "mikestead.dotenv",

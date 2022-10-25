@@ -1,15 +1,21 @@
 FROM python:3.10.8-alpine
 
-WORKDIR /app
+RUN pip install --upgrade pip \
+    && apk update && apk add --no-cache traefik git 
 
-COPY Pipfile Pipfile.lock ./
+RUN adduser -D worker
+USER worker
+WORKDIR /home/worker/app
 
-RUN apk update && apk add --no-cache traefik git \
-    && pip install pipenv \
+COPY --chown=worker:worker Pipfile Pipfile.lock ./
+
+ENV PATH="/home/worker/.local/bin:${PATH}"
+
+RUN pip install pipenv \
     && pipenv install
 
-COPY --chown=root:root . .
+COPY --chown=worker:worker . .
 
-RUN chmod +x /app/entrypoint.sh
+RUN chmod +x /home/worker/app/entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
