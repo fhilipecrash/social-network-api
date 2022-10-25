@@ -5,7 +5,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     volumes:
-      - '.:/app'
+      - '.:/home/worker/app'
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     ports:
