@@ -1,7 +1,7 @@
 FROM python:3.10.8-alpine
 
 RUN pip install --upgrade pip \
-    && apk update && apk add --no-cache traefik git 
+    && apk update && apk add --no-cache traefik git openssh
 
 RUN adduser -D worker
 USER worker
