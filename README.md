@@ -56,6 +56,12 @@ The frontend code can be found <a href="https://github.com/fhilipecrash/social-n
 
 ## Usage
 
+When you enter the project for the first time you will need to run the migrations to create the database tables.
+
+```sh
+pipenv run migrate
+```
+
 Checkout the Swagger documentation at http://localhost:8000/docs
 
 You can use [traefik](https://github.com/traefik/traefik) to use a basic proxy to the project. If you have trakif binary on your PATH, you can run the following command to start the proxy:
