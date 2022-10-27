@@ -14,7 +14,7 @@ This is a mini social media project that I created to learn more about the FastA
 <h2 align="center"> About </h2>
 
 <p align="center">
-This repo contains the backend code of the project made with Spring. <br>
+This repo contains the backend code of the project made with FastAPI. <br>
 The frontend code can be found <a href="https://github.com/fhilipecrash/social-network-frontend">here</a>.
 </p>
 
