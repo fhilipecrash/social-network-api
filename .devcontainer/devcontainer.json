@@ -1,7 +1,7 @@
 {
   "name": "Social Network API",
   "dockerComposeFile": "../docker-compose.yml",
-  "workspaceFolder": "/home/worker/app",
+  "workspaceFolder": "/app",
   "service": "python",
   "extensions": [
     "mikestead.dotenv",
@@ -11,5 +11,7 @@
     "ms-azuretools.vscode-docker",
     "ms-python.python"
   ],
-  "shutdownAction": "stopCompose"
+  "remoteUser": "worker",
+  "shutdownAction": "stopCompose",
+  "postCreateCommand": "chown -R 1000:1000 /app"
 }

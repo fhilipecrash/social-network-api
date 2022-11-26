@@ -4,18 +4,16 @@ RUN pip install --upgrade pip \
     && apk update && apk add --no-cache traefik git openssh
 
 RUN adduser -D worker
-USER worker
-WORKDIR /home/worker/app
 
-COPY --chown=worker:worker Pipfile Pipfile.lock ./
+WORKDIR /app
 
-ENV PATH="/home/worker/.local/bin:${PATH}"
+COPY Pipfile Pipfile.lock ./
 
 RUN pip install pipenv \
     && pipenv install
 
-COPY --chown=worker:worker . .
+COPY entrypoint.sh ./
 
-RUN chmod +x /home/worker/app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
