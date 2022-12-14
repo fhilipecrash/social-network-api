@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 
 # SQLALCHEMY_DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URL")
 
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:secret@host.docker.internal/social_network_db"
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:secret@host.docker.internal/userpostsdb"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL
