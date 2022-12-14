@@ -37,7 +37,7 @@ def get_user_posts(user_id: int, with_user_info: bool = False, db: Session = Dep
         return db_user
     db_user = controllers.get_user_posts(db, user_id)
     if not db_user:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=404, detail="This user don't have posts or doesn't exist")
     return db_user
 
 
